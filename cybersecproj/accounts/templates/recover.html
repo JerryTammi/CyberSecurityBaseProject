@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>CyberSecProj login</title>
+    </head>
+    
+    <body>
+		<h2>Recover password</h2>
+        {{ question }}
+        <form action="/forgottenpassword/recover/" method="POST">
+            {% csrf_token %}
+            Answer: <input type="text" name="answer">
+            <input type="hidden" name="username" value="{{ username }}">
+            <br/>
+            <input type="submit">
+        </form>
+        <br/>
+        <a href="/">Return to home page</a>
+    </body>
+
+</html>

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>CyberSecProj</title>
+    </head>
+    
+    <body>
+		<h2>Register</h2>
+        <form action="/register/" method="POST">
+            {% csrf_token %}
+            Username: <input type="text" name="username">
+            <br/>
+            Email: <input type="text" name="email">
+            <br/>
+            Password: <input type="password" name="password1">
+            <br/>
+            Retype Password: <input type="password" name="password2">
+            <br/>
+            <br/>
+            <label for="question">Choose a security quesiton for recovery purposes:</label>
+            <br/>
+            <select name="question">
+                {% for q in questions %}
+                <option value={{q.id}}>{{q.question_text}}</option>
+                {% endfor %}
+            </select>
+            <br/>
+            Answer: <input type="text" name="answer">
+            <br/>
+            <br/>
+            <input type="submit">
+        </form>
+        <br/>
+        <a href="/">Return to home page</a>
+    </body>
+</html>

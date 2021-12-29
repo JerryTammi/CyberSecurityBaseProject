@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>CyberSecProj login</title>
+    </head>
+    
+    <body>
+		<h2>Login</h2>
+        <form action="/login/" method="POST">
+            {% csrf_token %}
+            Username: <input type="text" name="username">
+            <br/>
+            Password: <input type="password" name="password">
+            <br/>
+            <input type="submit">
+        </form>
+        <br/>
+        <a href="/forgottenpassword">Forgotten password?</a>
+        <br/>
+        <a href="/">Return to home page</a>
+    </body>
+
+</html>
