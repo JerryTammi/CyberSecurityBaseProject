@@ -49,6 +49,7 @@ def buy(request):
     else:
         return redirect('home')
 
+@login_required
 def delete(request):
     if request.method == 'POST':
         ad_id = request.POST.get('ad_id')
