@@ -71,6 +71,8 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'cybersecproj.wsgi.application'
 
+#SESSION_COOKIE_SAMESITE = 'None'
+
 
 # Database
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases

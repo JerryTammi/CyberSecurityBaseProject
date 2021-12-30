@@ -13,12 +13,9 @@
                 <a href="/user/{{ item.owner.id }}/list">{{ item.owner.username }}</a>
                 <br/>
                 <br/>
-                <form action="/buy/{{item.ad.id}}" method="POST">
-                    {% csrf_token %}
+                <form action="/buy/" method="GET">
                     <input type="hidden" name="ad_id" value="{{ item.ad.id }}">
-                    {% if user.is_authenticated %}
                     <input type="submit" value="Buy">
-                    {% endif %}
                 </form>
                 <br/>
             </li>

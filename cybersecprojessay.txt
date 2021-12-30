@@ -17,4 +17,13 @@ Fix:
 		3. Instead of asking for a username for the forgotten password form, an email address would be required.
 		4. Access to the change password form would be provided in the email.
 	
+	Code:
+		https://github.com/JerryTammi/CyberSecurityBaseProject/blob/main/cybersecproj/flaws/Insecure%20design/insec_design.py
+	
+
+FLAW 2: A03:2021 – Injection (Cross-site Scripting)
+
+
+
+
 	
