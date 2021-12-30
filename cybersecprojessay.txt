@@ -73,6 +73,10 @@ Fix:
 	Ensure that only the owners of the listing can see the delete button and verify in the funciton, that the person logged in deleteing the ad is also the owner of the ad.
 	
 	Fixed Code:
+		https://github.com/JerryTammi/CyberSecurityBaseProject/blob/main/cybersecproj/flaws/4.%20Broken%20Access%20control/brAcCo.py#L13
+		https://github.com/JerryTammi/CyberSecurityBaseProject/blob/main/cybersecproj/flaws/4.%20Broken%20Access%20control/personallist.html
 		
+		
+FLAW 5: 
 
 	

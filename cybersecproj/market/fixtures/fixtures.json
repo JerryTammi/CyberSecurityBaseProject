@@ -1,0 +1,61 @@
+[
+  {
+    "model": "accounts.question",
+    "pk": 1,
+    "fields": {
+      "question_text": "What is your favorite movie?",
+    }
+  },
+  {
+    "model": "accounts.question",
+    "pk": 2,
+    "fields": {
+      "question_text": "What was your first nickname??",
+    }
+  },
+  {
+    "model": "accounts.question",
+    "pk": 3,
+    "fields": {
+      "question_text": "What is your first pets name??",
+    }
+  },
+  {
+    "model": "accounts.question",
+    "pk": 4,
+    "fields": {
+      "question_text": "What is your favorite color?",
+    }
+  },
+  {
+    "model": "accounts.question",
+    "pk": 5,
+    "fields": {
+      "question_text": "What is your Fathers name?",
+    }
+  },
+  {
+    "model": "auth.user",
+    "pk": 1,
+    "fields": {
+      "username": "admin",
+	  "password": "admin"
+    }
+  },
+  {
+    "model": "auth.user",
+    "pk": 2,
+    "fields": {
+      "username": "alice",
+	  "password": "redqueen"
+    }
+  },
+  {
+    "model": "auth.user",
+    "pk": 3,
+    "fields": {
+      "username": "bob",
+	  "password": "squarepants"
+    }
+  }
+]
