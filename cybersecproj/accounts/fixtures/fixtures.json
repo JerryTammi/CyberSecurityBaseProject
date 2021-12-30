@@ -3,35 +3,35 @@
     "model": "accounts.question",
     "pk": 1,
     "fields": {
-      "question_text": "What is your favorite movie?",
+      "question_text": "What is your favorite movie?"
     }
   },
   {
     "model": "accounts.question",
     "pk": 2,
     "fields": {
-      "question_text": "What was your first nickname??",
+      "question_text": "What was your first nickname??"
     }
   },
   {
     "model": "accounts.question",
     "pk": 3,
     "fields": {
-      "question_text": "What is your first pets name??",
+      "question_text": "What is your first pets name??"
     }
   },
   {
     "model": "accounts.question",
     "pk": 4,
     "fields": {
-      "question_text": "What is your favorite color?",
+      "question_text": "What is your favorite color?"
     }
   },
   {
     "model": "accounts.question",
     "pk": 5,
     "fields": {
-      "question_text": "What is your Fathers name?",
+      "question_text": "What is your Fathers name?"
     }
   },
   {
@@ -39,7 +39,10 @@
     "pk": 1,
     "fields": {
       "username": "admin",
-	  "password": "admin"
+	  "password": "pbkdf2_sha256$260000$bob2A2hSKihmW0GXN9gMu4$B91mMxodf98UMpypYUrkHoMD/p1QwOKLRTJwEbkqGzQ=",
+	  "is_superuser": true,
+	  "is_staff": true,
+      "is_active": true
     }
   },
   {
@@ -47,7 +50,7 @@
     "pk": 2,
     "fields": {
       "username": "alice",
-	  "password": "redqueen"
+	  "password": "pbkdf2_sha256$260000$16YJbnhmct34m2hvaTgoz0$h1s1Vj3MsL32lQOLIyu15567HbVQMv4eFE3vS8PhB7w="
     }
   },
   {
@@ -55,7 +58,7 @@
     "pk": 3,
     "fields": {
       "username": "bob",
-	  "password": "squarepants"
+	  "password": "pbkdf2_sha256$260000$9pB1HjT2JRcdNBujWIEa6E$KwTpNeGScAHSKnhQivKcONwZnLzW69AYHPqkDSucu/E="
     }
   }
 ]

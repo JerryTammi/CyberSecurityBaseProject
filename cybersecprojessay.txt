@@ -77,6 +77,8 @@ Fix:
 		https://github.com/JerryTammi/CyberSecurityBaseProject/blob/main/cybersecproj/flaws/4.%20Broken%20Access%20control/personallist.html
 		
 		
-FLAW 5: 
+FLAW 5: A05:2021 – Security Misconfiguration
+
+
 
 	
