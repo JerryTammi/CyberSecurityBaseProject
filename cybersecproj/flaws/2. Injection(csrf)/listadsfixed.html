@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>CyberSecProj</title>
+    </head>
+    <body>
+		<h2>List of Ads</h2>
+        <ol>
+            {% for item in list %}
+            {% if item.ad.sold == False %}
+            <li>{{ item.ad.name }} {{ item.ad.price }}e
+                <br/>
+                <a href="/user/{{ item.owner.id }}/list">{{ item.owner.username }}</a>
+                <br/>
+                <br/>
+                <form action="/buy/" method="POST">
+					{{ csrf_token }}
+                    <input type="hidden" name="ad_id" value="{{ item.ad.id }}">
+                    <input type="submit" value="Buy">
+                </form>
+                <br/>
+            </li>
+            {% endif %}
+            {% endfor %}
+        </ol>
+        <br/>
+        <a href="/">Return to home page</a>
+    </body>
+</html>

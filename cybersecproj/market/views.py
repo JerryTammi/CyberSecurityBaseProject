@@ -33,6 +33,8 @@ def buy(request):
     if request.method == 'GET':
         ad_id = request.GET.get('ad_id')
         ad = Ad.objects.get(id = ad_id)
+        if ad.sold == True:
+            return redirect('list_ads')
         buyer = request.user
         seller = Owner.objects.get(ad = ad)
         seller_id = seller.owner.id

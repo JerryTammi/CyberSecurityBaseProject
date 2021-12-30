@@ -17,13 +17,31 @@ Fix:
 		3. Instead of asking for a username for the forgotten password form, an email address would be required.
 		4. Access to the change password form would be provided in the email.
 	
-	Code:
+	Fixed Code:
 		https://github.com/JerryTammi/CyberSecurityBaseProject/blob/main/cybersecproj/flaws/Insecure%20design/insec_design.py
 	
 
 FLAW 2: A03:2021 – Injection (Cross-site Scripting)
 
+https://github.com/JerryTammi/CyberSecurityBaseProject/blob/main/cybersecproj/flaws/2.%20Injection/csrf.html
+https://github.com/JerryTammi/CyberSecurityBaseProject/blob/main/cybersecproj/market/views.py#L31
 
+Description: 
+	Shortly put a scammer can make the user buyer a product if the user accesses the site containing "csrf.html". To replicate the issue, the tester must:
+		1. Create at least two accounts. One who will be "scammed" and another that owns the listings. 
+		2. Add an ad that will be sold by the scammer
+		3. From the "/listads" page you have to view the source (on chrome ctrl u) and grab the value of ad_id
+		4. Log in as the account about to be scammed.
+		5. Edit the csrf.html file so that the src in the img tag has the correct value for ad_id
+		6. In the file containing csrf.html run "python3 -m http.server 9000"
+		7. In a browser open up "http://localhost:9000/csrf.html"
+		8. You can check the scammed accounts bought items (browse your listings on -link on the front page) if the item in question is one of them.
+	
+Fix:
+	Pretty simple fix, just remove the csrf_exempt tag from the fu nction and add {{ csrf_token }} into the buy form in the listads.html file. 
+
+	Fixed Code:
+		
 
 
 	
