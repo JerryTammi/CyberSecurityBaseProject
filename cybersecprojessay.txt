@@ -15,7 +15,7 @@ https://github.com/JerryTammi/CyberSecurityBaseProject/blob/main/cybersecproj/ac
 https://github.com/JerryTammi/CyberSecurityBaseProject/blob/main/cybersecproj/accounts/templates/recover.html
 
 Description: 
-	Account recovery is way too easy if the username is known and they are visible if the account has an active listing. During registeration a security question (only one) is selected and an answer is provided. If the answer is correct, a form for changing the password is given to the user. According to OWASP Top 10 and other credible sources, questions and answers are not a secure enough authentication method because more than one person can know the answers.
+	Account recovery is way too easy if the username is known and they are visible if the account has an active listing. During registeration a security question (only one) is selected and an answer is provided. If the answer is correct, a form for changing the password is given to the user. According to OWASP Top 10 and other credible sources, questions and answers are not a secure enough authentication method because more than one person can know the answers. Another issue is that weak passwords are allowed, the only requirement is that it is at least 4 characters in length.
 	
 Fix:
 	The most obvious way to fix this would be to:
@@ -23,6 +23,9 @@ Fix:
 		2. Get rid of the security questions and answers
 		3. Instead of asking for a username for the forgotten password form, an email address would be required.
 		4. Access to the change password form would be provided in the email.
+		5. Verify that passwords are strong enough by making sure that it it at least a certain length, and contains letters and numbers. 
+		
+		Note: For privacy reasons the email regsitration and verification is not provided in the code.
 	
 	Fixed Code:
 		https://github.com/JerryTammi/CyberSecurityBaseProject/blob/main/cybersecproj/flaws/Insecure%20design/insec_design.py
@@ -30,7 +33,7 @@ Fix:
 
 FLAW 2: A03:2021 – Injection (Cross-site Scripting)
 
-https://github.com/JerryTammi/CyberSecurityBaseProject/blob/main/cybersecproj/flaws/2.%20Injection/csrf.html
+https://github.com/JerryTammi/CyberSecurityBaseProject/blob/main/cybersecproj/flaws/2.%20Injection/csrf.html 
 https://github.com/JerryTammi/CyberSecurityBaseProject/blob/main/cybersecproj/market/views.py#L31
 
 Description: 
@@ -46,7 +49,7 @@ Description:
 		
 	
 Fix:
-	Pretty simple fix, just remove the csrf_exempt tag from the function and add {{ csrf_token }} into the buy form in the listads.html file. I also changed the request method from GET to POST.
+	Pretty simple fix, just remove the csrf_exempt tag from the function and add {{ csrf_token }} into the buy form in the listads.html file. I also changed the request method from GET to POST, so that a simple link embeded into an image is not enough to make any changes to the code.
 
 	Fixed Code:
 		https://github.com/JerryTammi/CyberSecurityBaseProject/blob/main/cybersecproj/flaws/2.%20Injection(csrf)/csrffix.py
@@ -75,10 +78,12 @@ https://github.com/JerryTammi/CyberSecurityBaseProject/blob/main/cybersecproj/ma
 https://github.com/JerryTammi/CyberSecurityBaseProject/blob/main/cybersecproj/market/templates/listpersonal.html#L13
 
 Description:
-	Users can access other users listings (intended) where they can delete their lisitngs (not intended). As of now, there is no way to restore the deleted ad, resulting in a potentially catastrophic loss of money!
+	Users can access the personal webpage of other users, where they can view the items up for sale, which is intended, and also delete these listings, which is not intended. Another thing that only the owner of the page should be able to view, which is the bought items, is in plain sight of all users accessing the page.
 
 Fix:
-	Ensure that only the owners of the listing can see the delete button and verify in the funciton, that the person logged in deleteing the ad is also the owner of the ad.
+	1. Hide the delete button unless the user viewing the page is the owner of the page.
+	2. Hide the bought items from users who are not the owner.
+	3. Verify in the function, that the person logged in deleting the ad ,is also the owner of the ad.
 	
 	Fixed Code:
 		https://github.com/JerryTammi/CyberSecurityBaseProject/blob/main/cybersecproj/flaws/4.%20Broken%20Access%20control/brAcCo.py#L13
@@ -90,13 +95,9 @@ FLAW 5: A05:2021 – Security Misconfiguration
 https://github.com/JerryTammi/CyberSecurityBaseProject/blob/main/cybersecproj/accounts/fixtures/fixtures.json#L38
 
 Description:
-	Inside the fixtures.json file the questions are fine but the default users are not. This includes the admin account that has superuser privileges with a weak password (password = admin).
+	Inside the fixtures.json file the questions are fine but the default users with weak passwords, no email accounts, and no security questions or answers. This includes the admin account that has superuser privileges which could make major changes to the app through the admin menu.
 	
 Fix:
-	Just delete the default users from fixtures.json file. Normal users can be created in the app itself and the admin account can be created manually with the "python3 manage.py createsuperuser" command.
-
-
-
-
-
+	Just delete the default users from fixtures.json file. Normal users can be created in the app itself, with no required fields missing, and the admin account can be created manually with the "python3 manage.py createsuperuser" command.
 	
+Note: Not sure why the textfield for submitting the report contains -200 words compared to the .txt file I wrote the report with.
