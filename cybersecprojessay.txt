@@ -27,7 +27,7 @@ https://github.com/JerryTammi/CyberSecurityBaseProject/blob/main/cybersecproj/fl
 https://github.com/JerryTammi/CyberSecurityBaseProject/blob/main/cybersecproj/market/views.py#L31
 
 Description: 
-	Shortly put a scammer can make the user buyer a product if the user accesses the site containing "csrf.html". To replicate the issue, the tester must:
+	Shortly put a scammer can make the user buyer a product if the user accesses the site containing "csrf.html". It is possible because of the lack of a csrf_token to verify that the request came from the same website.To replicate the issue, the tester must:
 		1. Create at least two accounts. One who will be "scammed" and another that owns the listings. 
 		2. Add an ad that will be sold by the scammer
 		3. From the "/listads" page you have to view the source (on chrome ctrl u) and grab the value of ad_id
@@ -38,10 +38,26 @@ Description:
 		8. You can check the scammed accounts bought items (browse your listings on -link on the front page) if the item in question is one of them.
 	
 Fix:
-	Pretty simple fix, just remove the csrf_exempt tag from the fu nction and add {{ csrf_token }} into the buy form in the listads.html file. 
+	Pretty simple fix, just remove the csrf_exempt tag from the function and add {{ csrf_token }} into the buy form in the listads.html file. I also changed the request method from GET to POST.
 
 	Fixed Code:
+		https://github.com/JerryTammi/CyberSecurityBaseProject/blob/main/cybersecproj/flaws/2.%20Injection(csrf)/csrffix.py
+		https://github.com/JerryTammi/CyberSecurityBaseProject/blob/main/cybersecproj/flaws/2.%20Injection(csrf)/listadsfixed.html
 		
+		
+FLAW 3: A09:2021 – Security Logging and Monitoring Failures
 
+Description:
+	There are basically no logging features implemented into the project. which could be used to detect for example:
+		1. Scammers selling items for extortionate prices
+		2. Spam creating listings which would affect the visibility of legitimate listings
+		3. Suspicious logins or login attempts from unfamiliar ip addresses
+		4. New listing should go through a filter to ensure that no illegal or unwanted items are up for sale
+		
+Fix:
+	I'm not going to go into too much detail but adding a log model that contains the user logging in, time of said user logging in, and the location (ip address) where the user has logged in from. Another fix is going through a list (not provided in the code) to ensure that the item for sale is safe.
+	
+	Fixed Code:
+		
 
 	
