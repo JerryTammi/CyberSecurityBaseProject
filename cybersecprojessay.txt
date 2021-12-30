@@ -1,5 +1,12 @@
 Link: https://github.com/JerryTammi/CyberSecurityBaseProject
 
+INSTALLATION INSTRUCTIONS:
+	1. Download the zip from the provided link and unpack it.
+	2. Open a command line in the directory containing the manage.py file.
+	3. run "python3 manage.py migrate"
+	4. run "python3 manage.py loaddata fixtures.json"
+	5. run "python3 manage.py runserver"
+
 FLAW 1: A04:2021 – Insecure Design
 
 https://github.com/JerryTammi/CyberSecurityBaseProject/blob/main/cybersecproj/accounts/views.py#L68
@@ -27,7 +34,7 @@ https://github.com/JerryTammi/CyberSecurityBaseProject/blob/main/cybersecproj/fl
 https://github.com/JerryTammi/CyberSecurityBaseProject/blob/main/cybersecproj/market/views.py#L31
 
 Description: 
-	Shortly put a scammer can make the user buyer a product if the user accesses the site containing "csrf.html". It is possible because of the lack of a csrf_token to verify that the request came from the same website.To replicate the issue, the tester must:
+	Shortly put, a scammer can make the user buy a product if the user accesses the site containing "csrf.html". It is possible because of the lack of a csrf_token to verify that the request came from the same website. To replicate the issue, the tester must:
 		1. Create at least two accounts. One who will be "scammed" and another that owns the listings. 
 		2. Add an ad that will be sold by the scammer
 		3. From the "/listads" page you have to view the source (on chrome ctrl u) and grab the value of ad_id
@@ -36,6 +43,7 @@ Description:
 		6. In the file containing csrf.html run "python3 -m http.server 9000"
 		7. In a browser open up "http://localhost:9000/csrf.html"
 		8. You can check the scammed accounts bought items (browse your listings on -link on the front page) if the item in question is one of them.
+		
 	
 Fix:
 	Pretty simple fix, just remove the csrf_exempt tag from the function and add {{ csrf_token }} into the buy form in the listads.html file. I also changed the request method from GET to POST.
@@ -78,6 +86,16 @@ Fix:
 		
 		
 FLAW 5: A05:2021 – Security Misconfiguration
+
+https://github.com/JerryTammi/CyberSecurityBaseProject/blob/main/cybersecproj/accounts/fixtures/fixtures.json#L38
+
+Description:
+	Inside the fixtures.json file the questions are fine but the default users are not. This includes the admin account that has superuser privileges with a weak password (password = admin).
+	
+Fix:
+	Just delete the default users from fixtures.json file. Normal users can be created in the app itself and the admin account can be created manually with the "python3 manage.py createsuperuser" command.
+
+
 
 
 
