@@ -1,0 +1,20 @@
+Link: https://github.com/JerryTammi/CyberSecurityBaseProject
+
+FLAW 1: A04:2021 – Insecure Design
+
+https://github.com/JerryTammi/CyberSecurityBaseProject/blob/main/cybersecproj/accounts/views.py#L68
+https://github.com/JerryTammi/CyberSecurityBaseProject/blob/main/cybersecproj/accounts/views.py#L83
+https://github.com/JerryTammi/CyberSecurityBaseProject/blob/main/cybersecproj/accounts/templates/forgottenpassword.html
+https://github.com/JerryTammi/CyberSecurityBaseProject/blob/main/cybersecproj/accounts/templates/recover.html
+
+Description: 
+	Account recovery is way too easy if the username is known and they are visible if the account has an active listing. During registeration a security question (only one) is selected and an answer is provided. If the answer is correct, a form for changing the password is given to the user. According to OWASP Top 10 and other credible sources, questions and answers are not a secure enough authentication method because more than one person can know the answers.
+	
+Fix:
+	The most obvious way to fix this would be to:
+		1. Verify the email during registration.
+		2. Get rid of the security questions and answers
+		3. Instead of asking for a username for the forgotten password form, an email address would be required.
+		4. Access to the change password form would be provided in the email.
+	
+	
