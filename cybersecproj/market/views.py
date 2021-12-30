@@ -49,6 +49,18 @@ def buy(request):
     else:
         return redirect('home')
 
+def delete(request):
+    if request.method == 'POST':
+        ad_id = request.POST.get('ad_id')
+        ad = Ad.objects.get(id = ad_id)
+        if ad.sold == True:
+            return redirect('list_ads')
+        ad.deleted = True
+        ad.save()
+        return redirect('home')
+    else:
+        return redirect('home')
+
 
 def personal_list(request, id):
     owner = User.objects.get(id = id)

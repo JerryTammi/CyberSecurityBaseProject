@@ -58,6 +58,17 @@ Fix:
 	I'm not going to go into too much detail but adding a log model that contains the user logging in, time of said user logging in, and the location (ip address) where the user has logged in from. Another fix is going through a list (not provided in the code) to ensure that the item for sale is safe.
 	
 	Fixed Code:
+		https://github.com/JerryTammi/CyberSecurityBaseProject/blob/main/cybersecproj/flaws/3.%20Logging/logging.py
 		
+		
+FLAW 4: A01:2021 – Broken Access Control
+
+
+
+Description:
+	Users can access other users listings (intended) where they can delete their lisitngs (not intended). As of now, there is no way to restore the deleted ad, resulting in a potentially catastrophic loss of money!
+
+Fix:
+	Ensure that only the owners of the listing can see the delete button and verify in the funciton, that the person logged in deleteing the ad is also the owner of the ad.
 
 	

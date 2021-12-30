@@ -7,7 +7,7 @@
 		<h2>List of Ads</h2>
         <ol>
             {% for item in list %}
-            {% if item.ad.sold == False %}
+            {% if item.ad.sold == False and item.ad.deleted == False %}
             <li>{{ item.ad.name }} {{ item.ad.price }}e
                 <br/>
                 <a href="/user/{{ item.owner.id }}/list">{{ item.owner.username }}</a>
